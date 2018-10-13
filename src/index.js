@@ -10,15 +10,15 @@ export function propWithDataFallback (prop, event, propOptions = { required: fal
   event = event || 'update:' + prop
 
   return {
-    props: typeof prop === 'string' ? [prop] : { [prop]: propOptions },
-    data: () => ({ [local]: '' }),
+    props: { [prop]: propOptions },
+    data: () => ({ [local]: undefined }),
     computed: {
       ['$' + prop]: {
         get () {
-          return this[prop] == null ? this.$data[local] : this[prop]
+          return this[prop] === undefined ? this.$data[local] : this[prop]
         },
         set (value) {
-          if (this[prop] == null) this.$data[local] = value
+          if (this[prop] === undefined) this.$data[local] = value
           else this.$emit(event, value)
         },
       },
