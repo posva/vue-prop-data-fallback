@@ -1,6 +1,6 @@
 {
   "name": "vue-prop-data-fallback",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "sideEffects": false,
   "description": "Vue mixin to support an optional prop by falling back to a local data",
   "main": "dist/vue-prop-data-fallback.cjs.js",
