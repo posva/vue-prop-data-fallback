@@ -20,6 +20,28 @@ describe('Prop with data fallback', () => {
     })
   })
 
+  it('customizes data property name and computed name', () => {
+    const mixin = propWithDataFallback('contact', null, null, {
+      data: 'localData',
+      computed: 'realData',
+    })
+    expect(mixin).toEqual({
+      data: anyFunction,
+      props: {
+        contact: {
+          required: false,
+        },
+      },
+      computed: {
+        realData: {
+          get: anyFunction,
+          set: anyFunction,
+        },
+      },
+    })
+    expect(mixin.data()).toEqual({ localData: undefined })
+  })
+
   it('works with prop array type', () => {
     expect(propWithDataFallback('contact', null, [Number, String])).toMatchObject({
       props: {
