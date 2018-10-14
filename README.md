@@ -43,11 +43,12 @@ Now the search input's value can be optionally controlled by the parent:
 
 ## API
 
-### `propWithDataFallback(prop: string, event?: string, propType?: Object) => mixinObject`
+### `propWithDataFallback(prop: string, event?: string, propType?: Object, options?: { data: string, computed: string }) => mixinObject`
 
 - `prop`: name of the prop that should be created
 - `event`: name of the event that should be emitted to enable the usage of `.sync` or `v-model`. Defaults to `update:` + the value of `prop` (to enable the `.sync` modifier by default)
 - `propType`: value provided to the prop option. Can be a type like `String`, `Boolean`, an array of types or an object (pretty much anything [here](https://vuejs.org/v2/guide/components-props.html#Prop-Validation)). Defaults to `{ required: false }`
+- `options`: extra options to customize the names of the data and computed properties
 
 ## License
 
