@@ -13,7 +13,7 @@ export function propWithDataFallback (prop, event, propOptions, { data, computed
 
   return {
     props: { [prop]: propOptions },
-    data: vm => ({ [local]: prop in vm ? undefined : initialValue }),
+    data: vm => ({ [local]: vm[prop] !== undefined ? undefined : initialValue }),
     computed: {
       [computed || '$' + prop]: {
         get () {

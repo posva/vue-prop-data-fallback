@@ -146,7 +146,7 @@ describe('Prop with data fallback', () => {
 
   it('suports an initial value when no prop is provided', () => {
     const mixin = propWithDataFallback('value', null, null, { initialValue: 0 })
-    const vm = { /* no prop provided */ }
+    const vm = { value: undefined }
     expect(
       mixin.data.call(vm, vm)
     ).toEqual({
