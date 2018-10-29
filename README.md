@@ -46,7 +46,7 @@ Now the search input's value can be optionally controlled by the parent:
 
 ## API
 
-### `propWithDataFallback(prop: string, event?: string, propType?: Object, options?: { data: string, computed: string }) => mixinObject`
+### `propWithDataFallback(prop: string, event?: string, propType?: Object, options?: { data: string, computed: string, initialValue: any }) => mixinObject`
 
 - `prop`: name of the prop that should be created
 - `event`: name of the event that should be emitted to enable the usage of `.sync` or `v-model`. Defaults to `'update:' + prop` (to enable the `.sync` modifier by default)
@@ -54,6 +54,7 @@ Now the search input's value can be optionally controlled by the parent:
 - `options`: extra options to customize the names of the data and computed properties
   - `data`: name of the property added to data. Defaults to `'_$' + prop`
   - `computed`: name of the property added to computed. Defaults to `'_$' + prop`
+  - `initialValue`: provides an initial value to be used when no prop is provided
 
 ## License
 
