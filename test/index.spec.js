@@ -39,7 +39,7 @@ describe('Prop with data fallback', () => {
         },
       },
     })
-    expect(mixin.data()).toEqual({ localData: undefined })
+    expect(mixin.data({})).toEqual({ localData: undefined })
   })
 
   it('works with prop array type', () => {
@@ -69,7 +69,7 @@ describe('Prop with data fallback', () => {
 
   it('prefixes data with _$', () => {
     const mixin = propWithDataFallback('value')
-    expect(mixin.data()).toEqual({ _$value: undefined })
+    expect(mixin.data({})).toEqual({ _$value: undefined })
   })
 
   it('emits an event named update:value', () => {
@@ -142,5 +142,25 @@ describe('Prop with data fallback', () => {
         $data: { _$value: 'foo' },
       })
     ).toBe('foo')
+  })
+
+  it('suports an initial value when no prop is provided', () => {
+    const mixin = propWithDataFallback('value', null, null, { initialValue: 0 })
+    const vm = { /* no prop provided */ }
+    expect(
+      mixin.data.call(vm, vm)
+    ).toEqual({
+      _$value: 0,
+    })
+  })
+
+  it('sets data to undefined when initialValue is provided and prop is present', () => {
+    const mixin = propWithDataFallback('value', null, null, { initialValue: 0 })
+    const vm = { value: null }
+    expect(
+      mixin.data.call(vm, vm)
+    ).toEqual({
+      _$value: undefined,
+    })
   })
 })

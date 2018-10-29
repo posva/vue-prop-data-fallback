@@ -6,14 +6,14 @@
  * @param {import('vue').PropOptions} [propOptions = { required: false }]  type or object for the prop
  * @param {{ data: string, computed: string}} [options] options to customize data and computed properties name
  */
-export function propWithDataFallback (prop, event, propOptions, { data, computed } = {}) {
+export function propWithDataFallback (prop, event, propOptions, { data, computed, initialValue } = {}) {
   const local = data || '_$' + prop
   propOptions = propOptions || { required: false }
   event = event || 'update:' + prop
 
   return {
     props: { [prop]: propOptions },
-    data: () => ({ [local]: undefined }),
+    data: vm => ({ [local]: prop in vm ? undefined : initialValue }),
     computed: {
       [computed || '$' + prop]: {
         get () {
