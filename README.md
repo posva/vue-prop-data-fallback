@@ -27,6 +27,9 @@ export default {
   methods: {
     doSomething() {
       this.$value // the prop or the local value
+      // it can be mutated normally
+      // this will either change the local variable or emit an event
+      this.$value = 'new value'
     },
   },
 }
