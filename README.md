@@ -53,7 +53,7 @@ Now the search input's value can be optionally controlled by the parent:
 - `propType`: value provided to the prop option. Can be a type like `String`, `Boolean`, an array of types or an object (pretty much anything [here](https://vuejs.org/v2/guide/components-props.html#Prop-Validation)). Defaults to `{ required: false }`
 - `options`: extra options to customize the names of the data and computed properties
   - `data`: name of the property added to data. Defaults to `'_$' + prop`
-  - `computed`: name of the property added to computed. Defaults to `'_$' + prop`
+  - `computed`: name of the property added to computed. Defaults to `'$' + prop`
   - `initialValue`: provides an initial value to be used when no prop is provided
 
 ## License
